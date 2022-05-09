@@ -11,6 +11,7 @@ const Form = () => {
 
   const onAdd = (event) => {
     event.preventDefault();
+   
 
     const request = {
       name: state.name,
@@ -32,6 +33,12 @@ const Form = () => {
         setState({ name: "" });
         formRef.current.reset();
       });
+  }
+  const onChange=(event) => {
+    console.log(event.target.value)
+    
+    setState({ ...state, name: event.target.value })
+    
   }
 
   const onEdit = (event) => {
@@ -65,11 +72,9 @@ const Form = () => {
       name="name"
       placeholder="¿Qué piensas hacer hoy?"
       defaultValue={item.name}
-      onChange={(event) => {
-        setState({ ...state, name: event.target.value })
-      }}  ></input>
-    {item.id && <button onClick={onEdit}>Actualizar</button>}
-    {!item.id && <button onClick={onAdd}>Crear</button>}
+      onChange={onChange}  ></input>
+    {item.id && <button onClick={state.name?onEdit:null}>Actualizar</button>}
+    {!item.id && <button onClick={state.name?onAdd:null}>Crear</button>}
   </form>
 }
 
