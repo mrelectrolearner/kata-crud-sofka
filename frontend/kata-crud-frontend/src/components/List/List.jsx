@@ -66,7 +66,7 @@ const List = () => {
             <td>{todo.name}</td>
             <td><div><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></div></td>
             <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
-            <td><button onClick={() => onEdit(todo)} disabled={todo.completed}>Editar</button></td>
+            <td><button className={todo.completed ? 'muted-button' : 'button'} onClick={() => onEdit(todo)} disabled={todo.completed}>Editar</button></td>
           </tr>
         })}
       </tbody>
