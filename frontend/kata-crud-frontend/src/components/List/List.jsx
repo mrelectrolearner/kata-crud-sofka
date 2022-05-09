@@ -64,9 +64,9 @@ const List = () => {
           return <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
             <td>{todo.id}</td>
             <td>{todo.name}</td>
-            <td><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></td>
+            <td><div><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></div></td>
             <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
-            <td><button onClick={() => onEdit(todo)}>Editar</button></td>
+            <td><button onClick={() => onEdit(todo)} disabled={todo.completed}>Editar</button></td>
           </tr>
         })}
       </tbody>
